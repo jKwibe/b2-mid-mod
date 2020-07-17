@@ -7,3 +7,8 @@
     <p><%= ride.name %></p>
   <% end %>
 </div>
+
+<%= form_tag"/mechanics/#{@mechanic.id}/rides", method: :post do %>
+  <%= select_tag :ride, options_from_collection_for_select(Ride.all, :id, :name), prompt: "Select something"%>
+  <%= submit_tag "Add Task" %>
+<% end %>

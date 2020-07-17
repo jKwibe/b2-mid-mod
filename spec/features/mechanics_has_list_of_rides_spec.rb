@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe 'user can see list of mechanics rides' do
   before(:each) do
+    Ride.destroy_all
     @sam = Mechanic.create!(name: "Sam Mills", years_of_experience: 10)
     @kara = Mechanic.create!(name: "Kara Smith", years_of_experience: 11)
 
@@ -22,6 +23,21 @@ RSpec.describe 'user can see list of mechanics rides' do
     within ".current_projects" do
       expect(page).to have_content("Lightning Racer")
       expect(page).to have_content("The Great Bear")
+    end
+  end
+
+  it 'can add a ride' do
+    visit "/mechanics/#{@sam.id}"
+
+    select "The Great Bear", from: :ride
+
+    click_on "Add Task"
+
+    expect(current_path).to eq("/mechanics/#{@sam.id}")
+
+    within ".current_projects" do
+      expect(page).to have_content("The Great Bear")
+      expect(page).to have_content("Storm Runner")
     end
   end
 
