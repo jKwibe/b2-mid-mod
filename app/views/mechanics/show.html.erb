@@ -1,0 +1,9 @@
+
+<p><span>Mechanic: </span><%= @mechanic.name %></p>
+<p><span>Years of Experience: </span><%= @mechanic.years_of_experience%></p>
+
+<div class="current_projects">
+  <% @mechanic.rides.each do |ride| %>
+    <p><%= ride.name %></p>
+  <% end %>
+</div>

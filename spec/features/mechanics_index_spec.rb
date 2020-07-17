@@ -4,7 +4,7 @@ RSpec.describe 'mechanics index page', type: :feature do
 
   it 'it can show data' do
     sam = Mechanic.create!(name: "Sam Mills", years_of_experience: 10)
-    sam = Mechanic.create!(name: "Kara Smith", years_of_experience: 11)
+    kara = Mechanic.create!(name: "Kara Smith", years_of_experience: 11)
     visit "/mechanics"
 
     within '.title' do
