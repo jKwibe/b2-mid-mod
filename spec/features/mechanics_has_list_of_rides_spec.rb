@@ -41,4 +41,16 @@ RSpec.describe 'user can see list of mechanics rides' do
     end
   end
 
+  it 'can send error if not selected' do
+    visit "/mechanics/#{@sam.id}"
+
+    select "Select something", from: :ride
+
+    click_on "Add Task"
+
+    expect(current_path).to eq("/mechanics/#{@sam.id}")
+
+    expect(page).to have_content("Must select a task")
+  end
+
 end

@@ -1,4 +1,9 @@
 
+<% if flash %>
+  <% flash.each do |_, message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
 <p><span>Mechanic: </span><%= @mechanic.name %></p>
 <p><span>Years of Experience: </span><%= @mechanic.years_of_experience%></p>
 
